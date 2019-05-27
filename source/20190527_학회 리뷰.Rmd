@@ -1,0 +1,17 @@
+---
+title: "2019-1 학회 리뷰"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 튜토리얼 OODA, Object oriented Data analysis
+
+## Python과 R에서의 Stan의 활용, 조성일, 전북대학교 (p.38)
+
+## 기타
+### 의약품 처방정보 분석을 통한 감염병 의심환자 추정 방안, 권의정, 신서희, 건강보험심사평가원 (p.9)
+
+### Inference for differential equation parameters using state-space model with variational Bayes approximation, 양현주, 서울대학교 (p.45)
