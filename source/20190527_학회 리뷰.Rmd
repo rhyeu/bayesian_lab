@@ -20,5 +20,5 @@ knitr::opts_chunk$set(echo = TRUE)
     - 질병관리본부의 대응체계에 유의한 정보를 제공
     
 ### Inference for differential equation parameters using state-space model with variational Bayes approximation, 양현주, 서울대학교 (p.45)
-    - DRAM(Delayed Rejection & Adaptive Metropolis) : 샘플이 기각되었을 때, 바로 다음 iteration으로 진행하는 것이 아니라 다른 proposal density를 시도해보는 것.
+- DRAM(Delayed Rejection & Adaptive Metropolis) : 샘플이 기각되었을 때, 바로 다음 iteration으로 진행하는 것이 아니라 다른 proposal density를 시도해보는 것.
     - DR(Delayed Rejection)과 AM(Adaptive Metropolis)의 결합
