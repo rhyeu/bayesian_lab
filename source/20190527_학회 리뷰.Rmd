@@ -7,10 +7,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### 튜토리얼 OODA, Object oriented Data analysis
-
----
-
 ### Python과 R에서의 Stan의 활용, 조성일, 전북대학교 (p.38)
 
 - 왜 Stan인가?

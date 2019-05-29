@@ -378,16 +378,31 @@ $(document).ready(function () {
 </div>
 
 
-<div id="ooda-object-oriented-data-analysis" class="section level2">
-<h2>튜토리얼 OODA, Object oriented Data analysis</h2>
+<div id="ooda-object-oriented-data-analysis" class="section level3">
+<h3>튜토리얼 OODA, Object oriented Data analysis</h3>
+<hr />
 </div>
-<div id="python-r-stan----p.38" class="section level2">
-<h2>Python과 R에서의 Stan의 활용, 조성일, 전북대학교 (p.38)</h2>
+<div id="python-r-stan----p.38" class="section level3">
+<h3>Python과 R에서의 Stan의 활용, 조성일, 전북대학교 (p.38)</h3>
+<ul>
+<li>왜 Stan인가?
+<ul>
+<li>확률적 프로그래밍을 위한 언어에는 <strong>WinBUGS</strong>, <strong>JAGS</strong>, <strong>Stan</strong> 등이 있음.</li>
+<li>모두 R 인터페이스 패키지가 공개되어 있지만,
+<ul>
+<li><strong>WinBUGS</strong>의 경우, 개발이 중단되고 이와 비슷한 OpenBUGS의 경우 업데이트가 느림</li>
+<li><strong>JAGS</strong>의 경우, 단체가 아닌 개인이 업데이트와 보수를 하고 있기 때문에 업데이트가 느리고 사용 설명이나 예시가 풍부하지 않음</li>
+<li><strong>Stan</strong>의 경우, Andrew Gelman, Bob Carpenter, Daniel Lee 등 여러 통계학자들와 개발자들이 그룹 규모로 개발 / 운영중임. R, Python, Mathlab을 지원.</li>
+<li><strong>Stan</strong>에는 Hamiltonian MCMC, No-U-Turn Sampler 등 개선된 MCMC 기법과, 대용량 데이터에서 효율적으로 베이지안 기법을 사용할 수 있는 ADVI(Automatic Differentiation Variational Inference; 자동 미분 변분 추정) 등을 쉽게 구현할 수 있음.</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
 </div>
-<div id="section" class="section level2">
-<h2>기타</h2>
-<div id="p.9" class="section level3">
-<h3>의약품 처방정보 분석을 통한 감염병 의심환자 추정 방안, 권의정, 신서희, 건강보험심사평가원 (p.9)</h3>
+<div id="section" class="section level3">
+<h3>기타</h3>
+<div id="p.9" class="section level4">
+<h4>의약품 처방정보 분석을 통한 감염병 의심환자 추정 방안, 권의정, 신서희, 건강보험심사평가원 (p.9)</h4>
 <ul>
 <li>DUR(의약품 안전사용서비스; Drug Utiliztion Review)
 <ul>
@@ -397,9 +412,10 @@ $(document).ready(function () {
 <li>질병관리본부의 대응체계에 유의한 정보를 제공</li>
 </ul></li>
 </ul>
+<hr />
 </div>
-<div id="inference-for-differential-equation-parameters-using-state-space-model-with-variational-bayes-approximation---p.45" class="section level3">
-<h3>Inference for differential equation parameters using state-space model with variational Bayes approximation, 양현주, 서울대학교 (p.45)</h3>
+<div id="inference-for-differential-equation-parameters-using-state-space-model-with-variational-bayes-approximation---p.45" class="section level4">
+<h4>Inference for differential equation parameters using state-space model with variational Bayes approximation, 양현주, 서울대학교 (p.45)</h4>
 <ul>
 <li>DRAM(Delayed Rejection &amp; Adaptive Metropolis) : 샘플이 기각되었을 때, 바로 다음 iteration으로 진행하는 것이 아니라 다른 proposal density를 시도해보는 것.
 <ul>
