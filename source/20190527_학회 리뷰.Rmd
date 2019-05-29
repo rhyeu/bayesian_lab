@@ -7,18 +7,56 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 튜토리얼 OODA, Object oriented Data analysis
+### 튜토리얼 OODA, Object oriented Data analysis
 
-## Python과 R에서의 Stan의 활용, 조성일, 전북대학교 (p.38)
+---
 
-## 기타
-### 의약품 처방정보 분석을 통한 감염병 의심환자 추정 방안, 권의정, 신서희, 건강보험심사평가원 (p.9)
+### Python과 R에서의 Stan의 활용, 조성일, 전북대학교 (p.38)
+
+- 왜 Stan인가?
+    - 확률적 프로그래밍을 위한 언어에는 **WinBUGS**, **JAGS**, **Stan** 등이 있음.
+    - 모두 R 인터페이스 패키지가 공개되어 있지만,
+        - **WinBUGS**의 경우, 개발이 중단되고 이와 비슷한 OpenBUGS의 경우 업데이트가 느림
+        - **JAGS**의 경우, 단체가 아닌 개인이 업데이트와 보수를 하고 있기 때문에 업데이트가 느리고 사용 설명이나 예시가 풍부하지 않음
+        - **Stan**의 경우, Andrew Gelman, Bob Carpenter, Daniel Lee 등 여러 통계학자들와 개발자들이 그룹 규모로 개발 / 운영중임. R, Python, Mathlab을 지원, chain별 병렬계산 가능
+        - **Stan**에는 Hamiltonian MCMC, No-U-Turn Sampler 등 개선된 MCMC 기법과, 대용량 데이터에서 효율적으로 베이지안 기법을 사용할 수 있는 ADVI(Automatic Differentiation Variational Inference; 자동 미분 변분 추정) 등을 쉽게 구현할 수 있음. 
+
+```{r}
+## Rtools 설치
+
+# install.packages("rstan", dependencies = T)
+# install.packages("ggmcmc")
+library(rstan)
+
+## 병렬계산
+# rstan_options(auto_write = TRUE)
+# options(mc.cores = parallel::detectCores())
+
+## BDA 5.5 Parallel experiments in eight schools
+## 8schools.stan 로 저장
+```
+
+```{r}
+schools_dat <- list(J = 8, 
+                    y = c(28,  8, -3,  7, -1,  1, 18, 12),
+                    sigma = c(15, 10, 16, 11,  9, 11, 10, 18))
+
+fit <- stan(file = '8schools.stan', data = schools_dat, 
+            iter = 1000, chains = 4)
+```
+
+---
+
+### 기타
+#### 의약품 처방정보 분석을 통한 감염병 의심환자 추정 방안, 권의정, 신서희, 건강보험심사평가원 (p.9)
 - DUR(의약품 안전사용서비스; Drug Utiliztion Review)
     - 환자가 의료기관에서 진료를 받을 시 함께 먹으면 부작용이 발생하거나 여러 기관에서 중복되어 처방받은 약에 대한 정보를 실시간으로 체크하여 의약품으로 인한 유해를 사전에 차단하는 서비스
     - 의사의 진단시점에서 확인 가능한 실시간성 의료정보
     - UBcare 프로젝트와 비슷한 기능을 식약처에서 서비스
     - 질병관리본부의 대응체계에 유의한 정보를 제공
+
+---
     
-### Inference for differential equation parameters using state-space model with variational Bayes approximation, 양현주, 서울대학교 (p.45)
+#### Inference for differential equation parameters using state-space model with variational Bayes approximation, 양현주, 서울대학교 (p.45)
 - DRAM(Delayed Rejection & Adaptive Metropolis) : 샘플이 기각되었을 때, 바로 다음 iteration으로 진행하는 것이 아니라 다른 proposal density를 시도해보는 것.
     - DR(Delayed Rejection)과 AM(Adaptive Metropolis)의 결합
