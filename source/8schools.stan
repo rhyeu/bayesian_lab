@@ -4,11 +4,6 @@
 // with mean 'mu' and standard deviation 'sigma'.
 //
 // Learn more about model development with Stan at:
-//
-//    http://mc-stan.org/users/interfaces/rstan.html
-//    https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started
-//
-
 // saved as 8schools.stan
 data {
   int<lower=0> J;         // number of schools 
