@@ -18,7 +18,10 @@ knitr::opts_chunk$set(echo = TRUE)
         - **Stan**의 경우, Andrew Gelman, Bob Carpenter, Daniel Lee 등 여러 통계학자들와 개발자들이 그룹 규모로 개발 / 운영중임. R, Python, Mathlab을 지원, chain별 병렬계산 가능
         - **Stan**에는 Hamiltonian MCMC, No-U-Turn Sampler 등 개선된 MCMC 기법과, 대용량 데이터에서 효율적으로 베이지안 기법을 사용할 수 있는 ADVI(Automatic Differentiation Variational Inference; 자동 미분 변분 추정) 등을 쉽게 구현할 수 있음. 
 
-- 어떻게 Stan을 공부할 것인가?
+- 어떻게 Stan을 공부할 것인가?]
+    - [공식 사이트](https://mc-stan.org/)
+    - [RStan Getting Started](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started)
+    - [공식 매뉴얼](https://mc-stan.org/docs/2_19/reference-manual/index.html)
     - [참고도서](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=186779904) 
 
 
