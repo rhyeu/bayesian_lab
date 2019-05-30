@@ -1,9 +1,10 @@
 ---
-title: "2019-1 학회 리뷰"
+title: "2019 KSS_spring review"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
+Sys.setlocale('LC_ALL','C')
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -17,55 +18,58 @@ knitr::opts_chunk$set(echo = TRUE)
         - **Stan**의 경우, Andrew Gelman, Bob Carpenter, Daniel Lee 등 여러 통계학자들와 개발자들이 그룹 규모로 개발 / 운영중임. R, Python, Mathlab을 지원, chain별 병렬계산 가능
         - **Stan**에는 Hamiltonian MCMC, No-U-Turn Sampler 등 개선된 MCMC 기법과, 대용량 데이터에서 효율적으로 베이지안 기법을 사용할 수 있는 ADVI(Automatic Differentiation Variational Inference; 자동 미분 변분 추정) 등을 쉽게 구현할 수 있음. 
 
+- 어떻게 Stan을 공부할 것인가?
+    - [참고도서](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=186779904) 
+
+
+
 ```{r}
+# 코드 실패...
+
+
 ## Rtools 설치
-remove.packages("rstan")
-if (file.exists(".RData")) file.remove(".RData")
-
-install.packages("rstan", repos = "https://cloud.r-project.org/", dependencies = TRUE)
-pkgbuild::has_build_tools(debug = TRUE)
-install.packages("ggmcmc")
-
-dotR <- file.path(Sys.getenv("HOME"), ".R")
-if (!file.exists(dotR)) dir.create(dotR)
-M <- file.path(dotR, ifelse(.Platform$OS.type == "windows", "Makevars.win", "Makevars"))
-if (!file.exists(M)) file.create(M)
-cat("\nCXX14FLAGS=-O3 -march=native -mtune=native",
-    if( grepl("^darwin", R.version$os)) "CXX14FLAGS += -arch x86_64 -ftemplate-depth-256" else 
-    if (.Platform$OS.type == "windows") "CXX11FLAGS=-O3 -march=native -mtune=native" else
-    "CXX14FLAGS += -fPIC",
-    file = M, sep = "\n", append = TRUE)
-
-M <- file.path(Sys.getenv("HOME"), ".R", ifelse(.Platform$OS.type == "windows", "Makevars.win", "Makevars"))
-file.edit(M)
-
-install.packages("StanHeaders")
-
-library(rstan)
-library(StanHeaders)
-
-## 병렬계산
-rstan_options(auto_write = TRUE)
-options(mc.cores = parallel::detectCores())
-Sys.setenv(LOCAL_CPPFLAGS = '-march=native')
-
-
-packageurl <- "http://cran.r-project.org/src/contrib/Archive/StanHeaders/StanHeaders_2.17.2.tar.gz"
-install.packages(packageurl, repos=NULL, type="source")
-
-## BDA 5.5 Parallel experiments in eight schools
-## 8schools.stan 로 저장
-
+# remove.packages("rstan")
+# if (file.exists(".RData")) file.remove(".RData")
+# install.packages("rstan", dependencies = T)
+# # install.packages("rstan", repos = "https://cloud.r-project.org/", dependencies = TRUE)
+# pkgbuild::has_build_tools(debug = TRUE)
+# install.packages("ggmcmc")
+# 
+# dotR <- file.path(Sys.getenv("HOME"), ".R")
+# if (!file.exists(dotR)) dir.create(dotR)
+# M <- file.path(dotR, ifelse(.Platform$OS.type == "windows", "Makevars.win", "Makevars"))
+# if (!file.exists(M)) file.create(M)
+# cat("\nCXX14FLAGS=-O3 -march=native -mtune=native",
+#     if( grepl("^darwin", R.version$os)) "CXX14FLAGS += -arch x86_64 -ftemplate-depth-256" else
+#     if (.Platform$OS.type == "windows") "CXX11FLAGS=-O3 -march=native -mtune=native" else
+#     "CXX14FLAGS += -fPIC",
+#     file = M, sep = "\n", append = TRUE)
+# 
+# M <- file.path(Sys.getenv("HOME"), ".R", ifelse(.Platform$OS.type == "windows", "Makevars.win", "Makevars"))
+# file.edit(M)
+# 
+# install.packages("StanHeaders")
+# 
+# library(rstan)
+# library(StanHeaders)
+# 
+# ## 병렬계산
+# rstan_options(auto_write = TRUE)
+# options(mc.cores = parallel::detectCores())
+# Sys.setenv(LOCAL_CPPFLAGS = '-march=native')
+# 
+# 
+# packageurl <- "http://cran.r-project.org/src/contrib/Archive/StanHeaders/StanHeaders_2.17.2.tar.gz"
+# install.packages(packageurl, repos=NULL, type="source")
 ```
 
 ```{r}
-stan_demo(461)
-schools_dat <- list(J = 8, 
-                    y = c(28,  8, -3,  7, -1,  1, 18, 12),
-                    sigma = c(15, 10, 16, 11,  9, 11, 10, 18))
+# stan_demo(461)
+# schools_dat <- list(J = 8,  
+                    # y = c(28,  8, -3,  7, -1,  1, 18, 12),
+                    # sigma = c(15, 10, 16, 11,  9, 11, 10, 18))
 
-fit <- stan(file = '8schools.stan', data = schools_dat, 
-            iter = 1000, chains = 4)
+# fit <- stan(file = './source/8schools.stan', data = schools_dat, iter = 1000, chains = 4)
 ```
 
 ---
