@@ -52,6 +52,7 @@ Sys.setenv(LOCAL_CPPFLAGS = '-march=native')
 
 packageurl <- "http://cran.r-project.org/src/contrib/Archive/StanHeaders/StanHeaders_2.17.2.tar.gz"
 install.packages(packageurl, repos=NULL, type="source")
+
 ## BDA 5.5 Parallel experiments in eight schools
 ## 8schools.stan 로 저장
 
