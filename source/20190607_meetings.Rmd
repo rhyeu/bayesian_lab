@@ -11,11 +11,20 @@ Sys.setlocale('LC_ALL','C')
 
 ### User preferences modeling using dirichlet process mixture model for a content-based recommender system (Cami at al., 2019)
 
+- 적용 분야 : **추천 시스템 (recommander system)**
+  - 비모수 베이지안을 이용해 많은 모델과 서비스들이 개발됨 (ex-Nexflix, Amazon)
+  - 추천 시스템에는 '무엇을 재료로 삼에 시스템을 구축하는가?'에 따라 크게 다섯 종류가 있지만, 이 논문에서는 내용기반 추천시스템(content-based recommander system)에 집중
+  - 추천 시스템은 확률적 모델이 들어가는 지에 따라 두 가지로 나눠볼 수 있다.
+    - 사용자들의 특성을 가지고 주요한 feature를 모델링한다음 유사도를 계산해 추천을 하는 'structural modeling'
+    - 확률 모형을 모델링한다음 사용자의 선택에 영향을 미치는 *assignment parameter*를 추정하는 'behavioral model'이 존재.
+    - 해당 논문은 **비모수 베이지안 기법을 이용해 여태 'structural modeling'에 속하는 'content based recommder system'에 확률적 모형을 적용하는 것.**(latent group의 수를 정하기 어렵고, 동적으로 변하는 환경에서 latent allocation을 update하기 어려움)
+  
+
 - 사용 알고리즘
     - DPMM 중 ddCRP (distance dependent CRP)
         - data similiarity matrix를 이용해 clustering.
 
-- 사용 데이터 : MovieLens 영화 평점(추천 시스템 연구/개발에 유명한 데이터), news twitter(API로 수집)
+- 사용 데이터 : **MovieLens 영화 평점**(추천 시스템 연구/개발에 유명한 데이터), news twitter(API로 수집)
     - MovieLens(https://grouplens.org/)
         - the University of Minnesota의 컴퓨터 공학과 소속 'grouplens'에서 운영.(The MovieLens Datasets: History and Context
 , 2016)
@@ -25,27 +34,42 @@ Sys.setlocale('LC_ALL','C')
                 - Small (1MB, 9,000개 영화, 600 users, 100,000 ratings)
                 - Full (265 MB, 58,000 영화, 280,000 사용자, 27,000,000 ratings)
         - 캐글에 EDA 존재(https://www.kaggle.com/grouplens)
-        
+        - 예시 
+  
 ---
 
 ### Maximum Margin Dirichlet Process Mixtures for Clustering.(Gang Chen, Haiying Zhang and Caiming Xiong)
+
+
 - 사용 알고리즘
-    - DP 기반의 discriminative models의 parameter들을 훈련시킴
-        - why?(*Nigram, Lafferty, and McCallum 1999; Jebara and Pentland, 1998; Lafferty, McCallum, and Pereira, 2001*)
+    - DP 기반의 discriminative models의 parameter들을 훈련시킴 (conjugate relationship or approximate method의 대안)
+        - why?
             1. 어려운 추론 과정을 효과적으로 피할 수 있음
             2. parameter space를 효율적으로 줄여나갈 수 있음
             3. the generative approach에 비해 accuracy가 높음
 
         - 제안 모델 : Maximum Margin Dirichlet Process Mixture Model (MMDPM) (Crammer et al. 2006)
-            - Contribution :
+          - 방법
+            - Dirichlet Process를 통해 data point들의 assignment parameter 추론
+            - 사전지식으로 활용되는 $\{ \theta_k \}^n_{i=1}$은 gibbs sampling을 이용해 추론 
+            
+$$
+p(\theta|\bf{x}_k, \beta) = p(\theta_k|\beta) \prod_{i=1}^{|\bf{x_k}|} p(\bf{x_k{_i}}|\theta_k) \quad (8)
+$$
+            - 이 때, conjugate relationship을 활용하기에는 이론적, 현실적인 제약이 있을 수 있기 때문에 conditional likelihood model의 일부를 DPM이 아닌 SVM classifier로 바꿈
+
+$$p(\bf{x}_i|\theta_k) \propto exp(\bf{X}^T_i \theta_k - \lambda||\theta_k||^2) \quad (9)$$            
+
+          - Contribution :
                 1) Optimize a conditional model
                 2) learn model parameters online(?)
                 3) yield higher clustering accuracy with fast speed.
-            - Gibbs sampling과 Online Maximum Margin leanring을 오가며 parameter를 학습함(EM-algorithm의 E/M step 처럼)
+          - Gibbs sampling과 Online Maximum Margin leanring을 오가며 parameter를 학습함(EM-algorithm의 E/M step 처럼)
             
-            - DPMM(Dirichelt Process Mixture Model)
-                - Drichelt Process를 통해 $\theta_k$를 generating
-            - 제안 모델에서는 DPM 대신 SVM classifier로 대체하여 사용 식(9)  
+          - DPMM(Dirichelt Process Mixture Model)
+$$$$
+            - Drichelt Process를 통해 $\theta_k$를 generating
+          - 제안 모델에서는 DPM 대신 SVM classifier로 대체하여 사용 식(9)  
             
             
 ---
@@ -68,13 +92,15 @@ Sys.setlocale('LC_ALL','C')
   - Rstudio는 1.2.x 이상으로
   - Windows 10에서 R 3.6.0과 Rtools 35의 조합은 추가 조치가 필요함
     - 2번 링크 참고
+    
+- stan 파일에서는 주석이 #이 아닌 //
 
 1. https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started
 
 2. https://discourse.mc-stan.org/t/rtools-not-properly-detected-in-r3-6-0-under-windows-10/9075
 
 
-- 예제
+- 예제 1 - BDA chpt 5.5 (2003)
 ```{r}
 library(rstan)
 

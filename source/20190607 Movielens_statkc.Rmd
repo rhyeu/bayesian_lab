@@ -2,7 +2,7 @@
 title: "Movielens"
 output: html_document
 ---
-리
+
 - [참고: xwMOOC 기계학습 영화 평점 - 무비렌즈(MovieLens), 이광춘](https://statkclee.github.io/ml/ml-text-movielens.html)
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -59,7 +59,7 @@ suffix <- ".csv"
 for (f in dataset_files) {
     path <- file.path( data_folder, dataset, paste0(f, suffix))
     assign(f, read_csv(path, col_types = cols()))
-    print(paste(f, "파일크기:", format(object.size(get(f)), units="Mb")))
+    print(paste(f, "file size", format(object.size(get(f)), units="Mb")))
 }
 
 ```
@@ -192,7 +192,7 @@ genre_words <- genres_tags %>%
     anti_join(tibble(tag=c(tolower(genre)))) %>%
     count(tag)
 
-wordcloud(genre_words$tag, genre_words$n, max.words = 50, colors=brewer.pal(8, "Dark2"))
+wordcloud(genre_words$tag, genre_words$n, max.words = 20, colors=brewer.pal(8, "Dark2"))
 ```
 - 코미디
 ```{r}
@@ -205,7 +205,7 @@ genre_words <- genres_tags %>%
   anti_join(tibble(tag=c(tolower(genre)))) %>%
   count(tag)
 
-  wordcloud(genre_words$tag, genre_words$n, max.words = 50, colors=brewer.pal(8, "Dark2"))
+  wordcloud(genre_words$tag, genre_words$n, max.words = 15, colors=brewer.pal(8, "Dark2"))
 ```
 
 - 드라마
@@ -219,7 +219,7 @@ genre_words <- genres_tags %>%
   anti_join(tibble(tag=c(tolower(genre)))) %>%
   count(tag)
 
-  wordcloud(genre_words$tag, genre_words$n, max.words = 50, colors=brewer.pal(8, "Dark2"))
+  wordcloud(genre_words$tag, genre_words$n, max.words = 20, colors=brewer.pal(8, "Dark2"))
 ```
 
 - 스릴러
@@ -233,7 +233,7 @@ genre_words <- genres_tags %>%
   anti_join(tibble(tag=c(tolower(genre)))) %>%
   count(tag)
 
-  wordcloud(genre_words$tag, genre_words$n, max.words = 50, colors=brewer.pal(8, "Dark2"))
+  wordcloud(genre_words$tag, genre_words$n, max.words = 20, colors=brewer.pal(8, "Dark2"))
 ```
 
 - 공포
@@ -247,7 +247,7 @@ genre_words <- genres_tags %>%
   anti_join(tibble(tag=c(tolower(genre)))) %>%
   count(tag)
 
-  wordcloud(genre_words$tag, genre_words$n, max.words = 50, colors=brewer.pal(8, "Dark2"))
+  wordcloud(genre_words$tag, genre_words$n, max.words = 20, colors=brewer.pal(8, "Dark2"))
 ```
 
 - 아동 
@@ -261,7 +261,7 @@ genre_words <- genres_tags %>%
   anti_join(tibble(tag=c(tolower(genre), "animation"))) %>%
   count(tag)
 
-  wordcloud(genre_words$tag, genre_words$n, max.words = 50, colors=brewer.pal(8, "Dark2"))
+  wordcloud(genre_words$tag, genre_words$n, max.words = 20, colors=brewer.pal(8, "Dark2"))
 ```
 
 - 범죄
@@ -275,7 +275,7 @@ genre_words <- genres_tags %>%
   anti_join(tibble(tag=c(tolower(genre)))) %>%
   count(tag)
 
-  wordcloud(genre_words$tag, genre_words$n, max.words = 50, colors=brewer.pal(8, "Dark2"))
+  wordcloud(genre_words$tag, genre_words$n, max.words = 20, colors=brewer.pal(8, "Dark2"))
 ```
 
 - 로맨스
@@ -289,7 +289,7 @@ genre_words <- genres_tags %>%
   anti_join(tibble(tag=c(tolower(genre)))) %>%
   count(tag)
 
-  wordcloud(genre_words$tag, genre_words$n, max.words = 50, colors=brewer.pal(8, "Dark2"))
+  wordcloud(genre_words$tag, genre_words$n, max.words = 20, colors=brewer.pal(8, "Dark2"))
 ```
 
 3.4 사용자 평점에 기초한 시대별 최고 영화?
