@@ -1,6 +1,7 @@
 ---
 title: "20190604 meeting"
 output:
+  word_document: default
   html_document: default
 ---
 
@@ -46,7 +47,7 @@ Sys.setlocale('LC_ALL','C')
 
 ***
 
-### Rstan 설치 - 설치 내용이 빠르게 바뀌므로 1번 링크 참고
+### Rstan 설치
 
 - 주요 설치 이슈
   - Rstudio는 1.2.x 이상으로
@@ -104,3 +105,9 @@ m <- as.matrix(fit)
 d <- as.data.frame(fit)
 ```
 
+
+---
+
+- 학회 지원 ㅠㅠㅠ
+  - 카카오 : https://careers.kakao.com/jobs/P-10476?fbclid=IwAR16pEQGzO5ChVkARWcVBlhvUEE1wN8cnWSrx_YxvGuLiqER7uR6tylV4NE
+  - 교내 국제학술대회 참가 지원금 : http://graduate.cau.ac.kr/2018/board_view.php?no=3514&page=1&part=notice&category=%EC%9E%A5%ED%95%99
