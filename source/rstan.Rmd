@@ -1,0 +1,24 @@
+---
+title: "rstan"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## generating fake data
+```{r}
+N <- 100
+set.seed(2018120094)
+Y <- rnorm(N, mean = 1.6, sd = 0.2)
+hist(Y)
+```
+
+# compile model
+```{r}
+library(rstan)
+
+model <- stan_model("first_model.stan")
+```
+
