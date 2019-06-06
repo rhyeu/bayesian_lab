@@ -7,9 +7,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 Sys.setlocale('LC_ALL','C')
-
-library(tinytex)
-tinytex::install_tinytex()
 ```
 
 ### User preferences modeling using dirichlet process mixture model for a content-based recommender system (Cami at al., 2019)
@@ -29,6 +26,8 @@ tinytex::install_tinytex()
                 - Full (265 MB, 58,000 영화, 280,000 사용자, 27,000,000 ratings)
         - 캐글에 EDA 존재(https://www.kaggle.com/grouplens)
         
+---
+
 ### Maximum Margin Dirichlet Process Mixtures for Clustering.(Gang Chen, Haiying Zhang and Caiming Xiong)
 - 사용 알고리즘
     - DP 기반의 discriminative models의 parameter들을 훈련시킴
@@ -46,4 +45,16 @@ tinytex::install_tinytex()
             
             - DPMM(Dirichelt Process Mixture Model)
                 - Drichelt Process를 통해 $\theta_k$를 generating
+            - 제안 모델에서는 DPM 대신 SVM classifier로 대체하여 사용 식(9)  
+            
+            
+---
 
+![DPM graphical model(https://statsbot.co/blog/bayesian-nonparametrics/)](../img/DPM.jpg)
+
+---
+
+- 추가 
+    - Nonparametric Bayesian Statistical Models in Biomedical Research(노희상 외 3명, 2014)
+    - 비모수 베이지안 군집분석(김도현_박사, 2009)
+    - 비모수 베이지안 온라인 학습방법과 변분 게이트 순환 유닛(정구환_박사, 2019)
