@@ -5,4 +5,31 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+Sys.setlocale('LC_ALL','C')
 ```
+
+### User preferences modeling using dirichlet process mixture model for a content-based recommender system (Cami at al., 2019)
+
+- 사용 알고리즘
+    - DPMM 중 ddCRP (distance dependent CRP)
+        - data similiarity matrix를 이용해 clustering.
+
+- 사용 데이터 : MovieLens 영화 평점(추천 시스템 연구/개발에 유명한 데이터), news twitter(API로 수집)
+    - MovieLens(https://grouplens.org/)
+        - the University of Minnesota의 컴퓨터 공학과 소속 'grouplens'에서 운영.(The MovieLens Datasets: History and Context
+, 2016)
+        - 다양한 형태의 데이터셋 제공
+            - MovieLens 20M Dataset(2015 Apr, 190MB, 27,000개 영화, 138,000 사용자, 12m scores)
+            - MovieLens Latest Datasets(2018, 9)
+                - Small (1MB, 9,000개 영화, 600 users, 100,000 ratings)
+                - Full (265 MB, 58,000 영화, 280,000 사용자, 27,000,000 ratings)
+        - 캐글에 EDA 존재(https://www.kaggle.com/grouplens)
+        
+### Maximum Margin Dirichlet Process Mixtures for Clustering.
+- 사용 알고리즘
+    - DP 기반의 discriminative models의 parameter들을 훈련시킴
+        - why?(*Nigram, Lafferty, and McCallum 1999; Jebara and Pentland, 1998; Lafferty, McCallum, and Pereira, 2001*)
+            1. 어려운 추론 과정을 효과적으로 피할 수 있음
+            2. parameter space를 효율적으로 줄여나갈 수 있음
+            3. the generative approach에 비해 accuracy가 높음
+        
