@@ -58,3 +58,18 @@ Sys.setlocale('LC_ALL','C')
     - Nonparametric Bayesian Statistical Models in Biomedical Research(노희상 외 3명, 2014)
     - 비모수 베이지안 군집분석(김도현_박사, 2009)
     - 비모수 베이지안 온라인 학습방법과 변분 게이트 순환 유닛(정구환_박사, 2019)
+
+
+***
+
+### Rstan 설치 - 설치 내용이 빠르게 바뀌므로 1번 링크 참고
+
+- 주요 설치 이슈
+  - Rstudio는 1.2.x 이상으로
+  - Windows 10에서 R 3.6.0과 Rtools 35의 조합은 추가 조치가 필요함
+    - 2번 링크 참고
+
+1. https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started
+
+2. https://discourse.mc-stan.org/t/rtools-not-properly-detected-in-r3-6-0-under-windows-10/9075
+
