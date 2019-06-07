@@ -1,7 +1,6 @@
 ---
 title: "20190604 meeting"
 output:
-  word_document: default
   html_document: default
 ---
 
@@ -105,6 +104,9 @@ m <- as.matrix(fit)
 d <- as.data.frame(fit)
 ```
 
+- 기타 : 영양을 기준으로 한 맥도날드 메뉴 분류 
+
+https://blog.echen.me/2012/03/20/infinite-mixture-models-with-nonparametric-bayes-and-the-dirichlet-process/
 
 ---
 
